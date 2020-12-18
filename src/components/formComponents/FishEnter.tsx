@@ -1,10 +1,20 @@
 import React from "react";
-import { TextField } from "@material-ui/core";
+import { connect } from "react-redux";
+import { reduxForm } from "redux-form";
 
-export const FishEnter = () => {
+const _FishEnter = () => {
   return (
-    <form noValidate autoComplete="off">
-      <TextField id="standard-basic" label="Standard" />
+    <form>
+      <input />
     </form>
   );
 };
+
+export const FishEnter = connect(
+  null,
+  null
+)(
+  reduxForm<any, any>({
+    form: "fishEnter",
+  })(_FishEnter)
+);
