@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Auth0ProviderWithHistory } from "./auth0-provider-with-history";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import theme from "./theme";
 import { Provider } from "react-redux";
@@ -16,11 +18,15 @@ const composeEnhancers =
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <Provider store={store}>
-      <CssBaseline />
-      <App />
-    </Provider>
-  </ThemeProvider>,
+  <BrowserRouter>
+    <Auth0ProviderWithHistory>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <CssBaseline />
+          <App />
+        </Provider>
+      </ThemeProvider>
+    </Auth0ProviderWithHistory>
+  </BrowserRouter>,
   document.getElementById("root")
 );
