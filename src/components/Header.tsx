@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   AppBar,
   Button,
@@ -12,6 +13,7 @@ import {
   Theme,
 } from "@material-ui/core";
 import { Menu as MenuIcon } from "@material-ui/icons";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Header = () => {
   const classes = useStyles();
+  const { user, isAuthenticated, logout } = useAuth0();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -60,14 +63,24 @@ const Header = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={handleClose}>
+            <NavLink to="/user/fish-view">View Fish</NavLink>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <NavLink to="/user/fish-enter">Add Fish</NavLink>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <NavLink to="/view-fish">filler</NavLink>
+          </MenuItem>
         </Menu>
         <Typography variant="h6" className={classes.title}>
           Livewell App
         </Typography>
-        <Button color="inherit">Login</Button>
+        {isAuthenticated && (
+          <Button color="inherit" onClick={() => logout()}>
+            Sign Out
+          </Button>
+        )}
       </Toolbar>
     </AppBar>
   );

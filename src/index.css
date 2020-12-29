@@ -15,3 +15,7 @@ code {
 #root {
   background-color: #b5ffff;
 }
+
+a {
+  text-decoration: none;
+}
