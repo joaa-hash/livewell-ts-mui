@@ -42,11 +42,11 @@ function createData(name: string, calories: number, fat: number) {
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0),
-  createData("Ice cream sandwich", 237, 9.0),
-  createData("Eclair", 262, 16.0),
-  createData("Cupcake", 305, 3.73),
-  createData("Gingerbread", 356, 16.0),
+  createData("Catfish", 12, 6),
+  createData("Catfish", 12, 6),
+  createData("Catfish", 12, 6),
+  createData("Catfish", 12, 6),
+  createData("Catfish", 12, 6),
 ];
 
 const useStyles = makeStyles({
@@ -69,9 +69,9 @@ const FishView = () => {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
+            <StyledTableCell>Species</StyledTableCell>
+            <StyledTableCell align="right">Length</StyledTableCell>
+            <StyledTableCell align="right">Weight</StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>

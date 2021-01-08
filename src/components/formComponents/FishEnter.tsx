@@ -69,8 +69,15 @@ const renderSelectField = ({
     >
       {children}
     </Select>
+    {touched && error && (
+      <div className="ui error message" style={{ color: "red" }}>
+        {error}
+      </div>
+    )}
   </FormControl>
 );
+
+const required = (value: any) => (value ? undefined : "Required");
 
 const _FishEnter = (props: any) => {
   const classes = useStyles();
@@ -90,7 +97,12 @@ const _FishEnter = (props: any) => {
           <Typography variant="h4" color="initial">
             Species:
           </Typography>
-          <Field name="species" component={renderSelectField} classes={classes}>
+          <Field
+            name="species"
+            component={renderSelectField}
+            classes={classes}
+            validate={required}
+          >
             {" "}
             <option value="" />
             <option>Largemouth Bass</option>
@@ -108,6 +120,7 @@ const _FishEnter = (props: any) => {
             label="inches"
             component={renderSelectField}
             classes={classes}
+            validate={required}
           >
             <option key="hardCodedKey" className="firstChildOption" />
             {Array.from({ length: 37 }).map((element, index) => (
@@ -124,6 +137,7 @@ const _FishEnter = (props: any) => {
             label="pounds"
             component={renderSelectField}
             classes={classes}
+            validate={required}
           >
             <option key="hardCodedKey" className="firstChildOption" />
             {Array.from({ length: 50 }).map((element, index) => (
@@ -135,6 +149,7 @@ const _FishEnter = (props: any) => {
             label="ounces"
             component={renderSelectField}
             classes={classes}
+            validate={required}
           >
             <option key="hardCodedKey" className="firstChildOption" />
             {Array.from({ length: 17 }).map((element, index) => (
