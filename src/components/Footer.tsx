@@ -1,12 +1,12 @@
 import React from "react";
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
-import { Restore, Favorite, LocationOn } from "@material-ui/icons";
+import { AddCircleOutline, LocationOn, TableChart } from "@material-ui/icons";
 
 const Footer = () => {
   return (
     <BottomNavigation showLabels>
-      <BottomNavigationAction label="Recents" icon={<Restore />} />
-      <BottomNavigationAction label="Favorites" icon={<Favorite />} />
+      <BottomNavigationAction label="View Fish" icon={<TableChart />} />
+      <BottomNavigationAction label="Add Fish" icon={<AddCircleOutline />} />
       <BottomNavigationAction label="Nearby" icon={<LocationOn />} />
     </BottomNavigation>
   );
