@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       justifyContent: "center",
     },
+    deleteButton: {
+      backgroundColor: "#ff2f2f",
+    },
     paper: {
       backgroundColor: theme.palette.background.paper,
       border: "2px solid #000",
@@ -40,6 +43,7 @@ export default function TransitionsModal() {
         onClick={handleOpen}
         variant="contained"
         color="primary"
+        className={classes.deleteButton}
       >
         Delete
       </Button>
