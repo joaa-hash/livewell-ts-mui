@@ -16,27 +16,32 @@ import {
 import SignInButton from "./authComponents/SignInButton";
 import { Link } from "react-router-dom";
 import logo from "../media/livewell_fish_logo.png";
+import lakeVid from "../media/lake_vid.mp4";
 import { Rowing } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      paddingTop: 40,
-      marginBottom: 20,
+    },
+    header: {
+      color: "#fff705",
     },
     subheader: {
-      color: "green",
+      color: "white",
     },
     gridItem: {
       textAlign: "center",
+      zIndex: 1000,
     },
     menuItem: {
       margin: "0 auto",
-      background: "linear-gradient(45deg,  #fbff00, #c8ffdb)",
+      background: "linear-gradient(45deg, #00000096, #00000033)",
+      borderRadius: 5,
+      zIndex: 1001,
     },
     paper: {
-      // background: "linear-gradient(45deg,lightyellow,white)",
+      background: "beige",
     },
     divider: {
       alignSelf: "center",
@@ -45,6 +50,35 @@ const useStyles = makeStyles((theme: Theme) =>
     tackleBoxButton: {
       backgroundColor: "yellow",
       color: "forestgreen",
+      "&:visited": {
+        color: "forestgreen",
+      },
+    },
+    videoContainer: {
+      width: "100%",
+      height: "100%",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      overflow: "hidden",
+      "&::after": {
+        content: "''",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        background: "rgba(0,0,0,0.11)",
+        width: "100%",
+        height: "100%",
+      },
+    },
+    video: {
+      minWidth: "100%",
+      minHeight: "100%",
+      objectFit: "cover",
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%,-50%)",
     },
   })
 );
@@ -59,8 +93,24 @@ export const Main = () => {
       direction="column"
       className={classes.root}
     >
+      <div className={classes.videoContainer}>
+        <video autoPlay loop className={classes.video}>
+          <source src={lakeVid} type="video/mp4"></source>
+        </video>
+      </div>
       <Grid item xs={12} className={classes.gridItem}>
-        <img src={logo} alt="fish" style={{ width: 314, height: 209 }} />
+        <img
+          src={logo}
+          alt="fish"
+          style={{
+            width: 314,
+            height: 229,
+            padding: "20px 10px 0px",
+          }}
+        />
+        <Typography variant="h1" color="initial" className={classes.header}>
+          Livewell App
+        </Typography>
       </Grid>
       <Grid item xs={12} className={classes.gridItem}>
         <Typography variant="h6" color="initial" className={classes.subheader}>
@@ -80,7 +130,7 @@ export const Main = () => {
           <Link to="/user/fish-view">Tackle Box</Link>
         </Button>
       </Grid>
-      <Grid item xs={12} className={classes.menuItem}>
+      {/* <Grid item xs={12} className={classes.menuItem}>
         <Paper elevation={3} className={classes.paper}>
           <List>
             <ListItem>
@@ -103,7 +153,7 @@ export const Main = () => {
             </ListItem>
           </List>
         </Paper>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };

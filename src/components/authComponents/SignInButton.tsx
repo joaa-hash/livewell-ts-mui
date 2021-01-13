@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     button: {
       backgroundColor: "yellow",
-      color: "forestgreen",
+      color: "black",
     },
   })
 );
