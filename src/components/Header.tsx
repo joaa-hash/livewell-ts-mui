@@ -12,19 +12,24 @@ import {
   createStyles,
   Theme,
 } from "@material-ui/core";
-import { Menu as MenuIcon } from "@material-ui/icons";
+import { AddCircle, Menu as MenuIcon, TableChart } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+      backgroundColor: "#0000001c",
+      color: "yellow",
     },
     menuButton: {
       marginRight: theme.spacing(2),
     },
     title: {
       flexGrow: 1,
+    },
+    icon: {
+      marginLeft: 7,
     },
   })
 );
@@ -43,7 +48,7 @@ const Header = () => {
     setAnchorEl(null);
   };
   return (
-    <AppBar position="static">
+    <AppBar position="static" className={classes.root}>
       <Toolbar>
         <IconButton
           edge="start"
@@ -65,12 +70,11 @@ const Header = () => {
         >
           <MenuItem onClick={handleClose}>
             <NavLink to="/user/fish-view">View Fish</NavLink>
+            <TableChart color="primary" className={classes.icon}></TableChart>
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <NavLink to="/user/fish-enter">Add Fish</NavLink>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <NavLink to="/view-fish">filler</NavLink>
+            <AddCircle color="primary" className={classes.icon}></AddCircle>
           </MenuItem>
         </Menu>
         <Typography variant="h6" className={classes.title}>
