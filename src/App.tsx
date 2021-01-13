@@ -28,7 +28,7 @@ export const App = () => {
           path="/user/fish-enter"
           component={isToken ? FishEnter : Main}
         />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Container>
   );
