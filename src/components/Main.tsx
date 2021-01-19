@@ -4,12 +4,7 @@ import {
   createStyles,
   Divider,
   Grid,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   makeStyles,
-  Paper,
   Theme,
   Typography,
 } from "@material-ui/core";
@@ -17,7 +12,6 @@ import SignInButton from "./authComponents/SignInButton";
 import { Link } from "react-router-dom";
 import logo from "../media/livewell_fish_logo.png";
 import lakeVid from "../media/lake_vid.mp4";
-import { Rowing } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     header: {
       color: "#fff705",
+      textShadow: " 3px 4px 13px black",
     },
     subheader: {
       color: "white",
@@ -34,18 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       zIndex: 1000,
     },
-    menuItem: {
-      margin: "0 auto",
-      background: "linear-gradient(45deg, #00000096, #00000033)",
-      borderRadius: 5,
-      zIndex: 1001,
-    },
-    paper: {
-      background: "beige",
-    },
-    divider: {
-      alignSelf: "center",
-      width: "60%",
+    buttonContainer: {
+      textAlign: "center",
+      zIndex: 1000,
+      // paddingBottom: "0 !important",
     },
     tackleBoxButton: {
       backgroundColor: "yellow",
@@ -56,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     videoContainer: {
       width: "100%",
-      height: "100%",
+      minHeight: "106%",
       position: "absolute",
       top: 0,
       left: 0,
@@ -66,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) =>
         position: "absolute",
         top: 0,
         left: 0,
-        background: "rgba(0,0,0,0.11)",
+        background: "rgba(0,0,0,0.04)",
         width: "100%",
         height: "100%",
       },
@@ -93,11 +80,11 @@ export const Main = () => {
       direction="column"
       className={classes.root}
     >
-      <div className={classes.videoContainer}>
+      {/* <div className={classes.videoContainer}>
         <video autoPlay loop className={classes.video}>
           <source src={lakeVid} type="video/mp4"></source>
         </video>
-      </div>
+      </div> */}
       <Grid item xs={12} className={classes.gridItem}>
         <img
           src={logo}
@@ -105,7 +92,7 @@ export const Main = () => {
           style={{
             width: 314,
             height: 229,
-            padding: "20px 10px 0px",
+            padding: "0px 10px 0px",
           }}
         />
         <Typography variant="h1" color="initial" className={classes.header}>
@@ -119,41 +106,28 @@ export const Main = () => {
       </Grid>
       <Grid item xs={12} className={classes.gridItem}>
         <SignInButton />
+        {/* <Button
+          size="large"
+          variant="contained"
+          className={classes.tackleBoxButton}
+        >
+          <Link to="/user/fish-view">Tackle Box</Link>
+        </Button> */}
       </Grid>
-      <Divider
-        variant="middle"
-        orientation="horizontal"
-        className={classes.divider}
-      />
-      <Grid item xs={12} className={classes.gridItem}>
-        <Button variant="contained" className={classes.tackleBoxButton}>
+      <Grid item xs={12} className={classes.buttonContainer}>
+        <Button
+          size="large"
+          variant="contained"
+          className={classes.tackleBoxButton}
+        >
           <Link to="/user/fish-view">Tackle Box</Link>
         </Button>
       </Grid>
-      {/* <Grid item xs={12} className={classes.menuItem}>
-        <Paper elevation={3} className={classes.paper}>
-          <List>
-            <ListItem>
-              <ListItemIcon>
-                <Rowing />
-              </ListItemIcon>
-              <ListItemText primary="Single-line item" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="Single-line item" />
-              <ListItemIcon>
-                <Rowing />
-              </ListItemIcon>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <Rowing />
-              </ListItemIcon>
-              <ListItemText primary="Single-line item" />
-            </ListItem>
-          </List>
-        </Paper>
-      </Grid> */}
+      <div className={classes.videoContainer}>
+        <video autoPlay loop className={classes.video}>
+          <source src={lakeVid} type="video/mp4"></source>
+        </video>
+      </div>
     </Grid>
   );
 };
