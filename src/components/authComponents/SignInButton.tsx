@@ -16,6 +16,7 @@ const SignInButton = () => {
   const classes = useStyles();
   return (
     <Button
+      size="large"
       variant="contained"
       onClick={() => loginWithRedirect()}
       className={classes.button}
