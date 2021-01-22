@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   createStyles,
   makeStyles,
   Paper,
@@ -20,7 +19,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     head: {
       backgroundColor: "#00a6ff",
-      color: "yellow",
+      color: theme.palette.primary.main,
       backgroundImage: "linear-gradient(45deg, #00000033, transparent);",
       textAlign: "left",
     },
@@ -55,21 +54,23 @@ const rows = [
   createData("Catfish", 12, 6),
 ];
 
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-    marginBottom: 40,
-  },
-  table: {
-    minWidth: 700,
-  },
-  head: {
-    backgroundColor: "#00a6ff",
-    color: "yellow",
-    backgroundImage: "linear-gradient(45deg, #00000033, transparent);",
-    textAlign: "left",
-  },
-});
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: "100%",
+      marginBottom: 40,
+    },
+    table: {
+      minWidth: 700,
+    },
+    head: {
+      backgroundColor: "#00a6ff",
+      color: theme.palette.primary.main,
+      backgroundImage: "linear-gradient(45deg, #00000033, transparent);",
+      textAlign: "left",
+    },
+  })
+);
 
 const FishView = () => {
   const classes = useStyles();
