@@ -12,7 +12,12 @@ import {
   createStyles,
   Theme,
 } from "@material-ui/core";
-import { AddCircle, Menu as MenuIcon, TableChart } from "@material-ui/icons";
+import {
+  AddCircle,
+  BusinessCenter,
+  Menu as MenuIcon,
+  TableChart,
+} from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -21,6 +26,14 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       backgroundColor: "#0000001c",
       color: theme.palette.primary.main,
+    },
+    menu: {
+      "& ul": {
+        backgroundColor: theme.palette.primary.contrastText,
+      },
+      "& a": {
+        color: theme.palette.primary.main,
+      },
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -67,7 +80,15 @@ const Header = () => {
           keepMounted
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          className={classes.menu}
         >
+          <MenuItem onClick={handleClose}>
+            <NavLink to="/user/tacklebox">Tackle Box</NavLink>
+            <BusinessCenter
+              color="primary"
+              className={classes.icon}
+            ></BusinessCenter>
+          </MenuItem>
           <MenuItem onClick={handleClose}>
             <NavLink to="/user/fish-view">View Fish</NavLink>
             <TableChart color="primary" className={classes.icon}></TableChart>
