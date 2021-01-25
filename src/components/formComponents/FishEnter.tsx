@@ -14,7 +14,6 @@ import {
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
 import tackle from "../../media/tackle_box.jpg";
-import { AddCircle } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,8 +24,21 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: 50,
       textAlign: "center",
     },
+    gridItem: {
+      width: "100%",
+    },
     formControl: {
       margin: theme.spacing(1),
+      width: "80%",
+      "& .MuiFormLabel-root.Mui-focused": {
+        color: theme.palette.primary.contrastText,
+      },
+      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+        borderColor: theme.palette.primary.contrastText,
+      },
+    },
+    inputHeader: {
+      color: theme.palette.primary.contrastText,
     },
     formHeader: {
       color: "white",
@@ -35,27 +47,36 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundImage: `url(${tackle})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
+      "& h4": {
+        fontWeight: 1000,
+      },
+      zIndex: 1,
       "&::before": {
         content: "''",
         position: "absolute",
         top: 0,
         left: 0,
-        background: "rgba(0,0,0,0.54)",
+        background: "rgba(0,0,0,0.72)",
         width: "100%",
         height: "100%",
+        zIndex: -1,
       },
     },
     select: {
       height: 60,
       padding: "0 0 0 20px !important",
-      fontSize: 37,
-      lineHeight: "37px",
+      fontSize: 25,
+      lineHeight: "25px",
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
     inputLabel: {
       backgroundColor: "white",
+    },
+    addFishBtn: {
+      backgroundColor: theme.palette.primary.contrastText,
+      color: theme.palette.primary.main,
     },
   })
 );
@@ -128,10 +149,9 @@ const _FishEnter = (props: any) => {
         >
           <Grid item xs={12} className={classes.formHeader}>
             <Typography variant="h4">Add Fish</Typography>
-            <AddCircle fontSize="large"></AddCircle>
           </Grid>
-          <Grid item>
-            <Typography variant="h4" color="initial">
+          <Grid item className={classes.gridItem}>
+            <Typography variant="h4" className={classes.inputHeader}>
               Species:
             </Typography>
             <Field
@@ -142,14 +162,14 @@ const _FishEnter = (props: any) => {
             >
               {" "}
               <option value="" />
-              <option value={"lb"}>Largemouth Bass</option>
-              <option value="bg">Bluegill</option>
-              <option value="wp">White Perch</option>
-              <option value="cf">Catfish</option>
+              <option value="Largemouth Bass">Largemouth Bass</option>
+              <option value="Bluegill">Bluegill</option>
+              <option value="White Perch">White Perch</option>
+              <option value="Catfish">Catfish</option>
             </Field>
           </Grid>
-          <Grid item>
-            <Typography variant="h4" color="initial">
+          <Grid item className={classes.gridItem}>
+            <Typography variant="h4" className={classes.inputHeader}>
               Length:
             </Typography>
             <Field
@@ -165,8 +185,8 @@ const _FishEnter = (props: any) => {
               ))}
             </Field>
           </Grid>
-          <Grid item>
-            <Typography variant="h4" color="initial">
+          <Grid item className={classes.gridItem}>
+            <Typography variant="h4" className={classes.inputHeader}>
               Weight:
             </Typography>
             <Field
@@ -194,7 +214,7 @@ const _FishEnter = (props: any) => {
               ))}
             </Field>
           </Grid>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" className={classes.addFishBtn}>
             Add Fish
           </Button>
         </Grid>

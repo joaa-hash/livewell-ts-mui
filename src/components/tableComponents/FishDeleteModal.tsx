@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     deleteButton: {
       backgroundColor: "#ff2f2f",
+      color: "white",
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
