@@ -66,7 +66,7 @@ export const TackleBox = () => {
         <Grid item className={classes.gridItem}>
           <Button variant="contained" className={classes.button} size="large">
             <Link to="/user/fish-view" className={classes.route}>
-              Fish View
+              View Fish
             </Link>
           </Button>
         </Grid>
@@ -74,7 +74,7 @@ export const TackleBox = () => {
           {" "}
           <Button variant="contained" className={classes.button} size="large">
             <Link to="/user/fish-enter" className={classes.route}>
-              Fish Enter
+              Add Fish
             </Link>
           </Button>
         </Grid>
