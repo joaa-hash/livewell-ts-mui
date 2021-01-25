@@ -4,6 +4,7 @@ import {
   createStyles,
   Divider,
   Grid,
+  IconButton,
   makeStyles,
   Theme,
   Typography,
@@ -12,6 +13,7 @@ import SignInButton from "./authComponents/SignInButton";
 import { Link } from "react-router-dom";
 import logo from "../media/livewell_fish_logo.png";
 import lakeVid from "../media/lake_vid.mp4";
+import { BusinessCenter } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
     },
     header: {
-      color: "#fff705",
+      color: theme.palette.primary.main,
       textShadow: " 3px 4px 13px black",
     },
     subheader: {
@@ -32,14 +34,21 @@ const useStyles = makeStyles((theme: Theme) =>
     buttonContainer: {
       textAlign: "center",
       zIndex: 1000,
-      // paddingBottom: "0 !important",
     },
     tackleBoxButton: {
-      backgroundColor: "yellow",
-      color: "forestgreen",
+      backgroundColor: theme.palette.primary.main,
+      borderRadius: 5,
+      fontSize: "1.1rem",
+    },
+    tackleBoxButtonLink: {
+      color: theme.palette.primary.contrastText,
+      paddingRight: 12,
       "&:visited": {
-        color: "forestgreen",
+        color: theme.palette.primary.contrastText,
       },
+    },
+    tackleBoxIcon: {
+      color: theme.palette.primary.contrastText,
     },
     videoContainer: {
       width: "100%",
@@ -80,18 +89,13 @@ export const Main = () => {
       direction="column"
       className={classes.root}
     >
-      {/* <div className={classes.videoContainer}>
-        <video autoPlay loop className={classes.video}>
-          <source src={lakeVid} type="video/mp4"></source>
-        </video>
-      </div> */}
       <Grid item xs={12} className={classes.gridItem}>
         <img
           src={logo}
           alt="fish"
           style={{
             width: 314,
-            height: 229,
+            height: 170,
             padding: "0px 10px 0px",
           }}
         />
@@ -101,27 +105,19 @@ export const Main = () => {
       </Grid>
       <Grid item xs={12} className={classes.gridItem}>
         <Typography variant="h6" color="initial" className={classes.subheader}>
-          Sign In or go to Dashboard
+          Sign In or go to Tacklebox
         </Typography>
       </Grid>
       <Grid item xs={12} className={classes.gridItem}>
         <SignInButton />
-        {/* <Button
-          size="large"
-          variant="contained"
-          className={classes.tackleBoxButton}
-        >
-          <Link to="/user/fish-view">Tackle Box</Link>
-        </Button> */}
       </Grid>
       <Grid item xs={12} className={classes.buttonContainer}>
-        <Button
-          size="large"
-          variant="contained"
-          className={classes.tackleBoxButton}
-        >
-          <Link to="/user/fish-view">Tackle Box</Link>
-        </Button>
+        <IconButton className={classes.tackleBoxButton}>
+          <Link to="/user/tacklebox" className={classes.tackleBoxButtonLink}>
+            Tackle Box
+          </Link>
+          <BusinessCenter className={classes.tackleBoxIcon} />
+        </IconButton>
       </Grid>
       <div className={classes.videoContainer}>
         <video autoPlay loop className={classes.video}>
