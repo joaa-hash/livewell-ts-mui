@@ -1,8 +1,6 @@
 import React from "react";
 import {
-  Button,
   createStyles,
-  Divider,
   Grid,
   IconButton,
   makeStyles,
@@ -19,6 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+      minHeight: "100vh",
     },
     header: {
       color: theme.palette.primary.main,

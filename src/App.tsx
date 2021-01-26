@@ -8,7 +8,7 @@ import { FishEnter } from "./components/formComponents/FishEnter";
 import Header from "./components/Header";
 import { Main } from "./components/Main";
 import FishView from "./components/tableComponents/FishView";
-import TackleBox from "./components/tackleBoxComponents/TackleBox";
+import { TackleBox } from "./components/tackleBoxComponents/TackleBox";
 import { AttachAuthHeader } from "./services/http";
 import { NoMatch } from "./components/noMatchComponent/NoMatch";
 

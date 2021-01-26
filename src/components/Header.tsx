@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Header = () => {
   const classes = useStyles();
-  const { user, isAuthenticated, logout } = useAuth0();
+  const { isAuthenticated, logout } = useAuth0();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
