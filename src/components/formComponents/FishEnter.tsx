@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import {
   Button,
@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
 import tackle from "../../media/tackle_box.jpg";
+import { addFish } from "../../actions";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -66,7 +67,8 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 60,
       padding: "0 0 0 20px !important",
       fontSize: 25,
-      lineHeight: "25px",
+      lineHeight: "29px",
+      appearance: "none",
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -91,14 +93,14 @@ const renderSelectField = ({
 }: {
   label: any;
   input: any;
-  meta: { touched: string; error: any };
+  meta: { touched: any; error: any };
   children: any;
   classes: { formControl: any; selectEmpty: any; select: any; inputLabel: any };
 }) => (
   <FormControl
     variant="outlined"
     error={touched && error}
-    className={classes?.formControl}
+    className={classes.formControl}
   >
     <InputLabel htmlFor="color-native-simple" className={classes.inputLabel}>
       {label}
@@ -117,15 +119,19 @@ const renderSelectField = ({
     </Select>
     {touched && error && (
       <div className="ui error message" style={{ color: "red" }}>
-        {error}
+        Required
       </div>
     )}
   </FormControl>
 );
 
-const required = (value: any) => (value ? undefined : "Required");
+const required = (value: any) => (value ? undefined : true);
 
 const _FishEnter = (props: any) => {
+  const dispatch = useDispatch();
+  const onSubmit = (formData: {}) => {
+    dispatch(addFish(formData, props));
+  };
   const classes = useStyles();
   return (
     <div>
@@ -136,10 +142,11 @@ const _FishEnter = (props: any) => {
           width: 314,
           height: 155,
           padding: "0px 10px 0px",
-          marginTop: 20,
+          margin: "20px auto",
+          display: "block",
         }}
       />
-      <form className={classes.root}>
+      <form className={classes.root} onSubmit={props.handleSubmit(onSubmit)}>
         <Grid
           container
           spacing={6}
@@ -214,7 +221,11 @@ const _FishEnter = (props: any) => {
               ))}
             </Field>
           </Grid>
-          <Button variant="contained" className={classes.addFishBtn}>
+          <Button
+            variant="contained"
+            className={classes.addFishBtn}
+            type="submit"
+          >
             Add Fish
           </Button>
         </Grid>
