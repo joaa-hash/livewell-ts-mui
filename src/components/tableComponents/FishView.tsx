@@ -14,6 +14,8 @@ import {
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
 import FishDeleteModal from "./FishDeleteModal";
+import { useSelector } from "react-redux";
+import { AppState } from "../..";
 
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
@@ -42,21 +44,12 @@ const StyledTableRow = withStyles((theme: Theme) =>
   })
 )(TableRow);
 
-function createData(name: string, calories: number, fat: number) {
-  return { name, calories, fat };
-}
-
-const rows = [
-  createData("Catfish", 12, 6),
-  createData("Catfish", 12, 6),
-  createData("Catfish", 12, 6),
-  createData("Catfish", 12, 6),
-  createData("Catfish", 12, 6),
-];
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      minHeight: "80vh",
+    },
+    tableContainer: {
       width: "100%",
       marginBottom: 40,
     },
@@ -74,8 +67,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const FishView = () => {
   const classes = useStyles();
+  const fish = useSelector((state: AppState) => state.fish);
   return (
-    <div>
+    <div className={classes.root}>
       <img
         src={logo}
         alt="fish"
@@ -83,10 +77,11 @@ const FishView = () => {
           width: 314,
           height: 155,
           padding: "0px 10px 0px",
-          marginTop: 20,
+          margin: "20px auto 10px",
+          display: "block",
         }}
       />
-      <TableContainer component={Paper} className={classes.root}>
+      <TableContainer component={Paper} className={classes.tableContainer}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -97,15 +92,19 @@ const FishView = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.name}>
+            {fish.map((fish, index) => (
+              <StyledTableRow key={`${fish.species}${index * 2}`}>
                 <StyledTableCell component="th" scope="row">
-                  {row.name}
+                  {fish.species}
                 </StyledTableCell>
-                <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                <StyledTableCell align="left">{row.fat}</StyledTableCell>
+                <StyledTableCell align="left">
+                  {fish.inches} inches
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  {fish.pounds} lbs {fish.ounces} ounces
+                </StyledTableCell>
                 <StyledTableCell align="center">
-                  <FishDeleteModal />
+                  <FishDeleteModal fishId={fish.id} fish={fish} />
                 </StyledTableCell>
               </StyledTableRow>
             ))}
