@@ -6,7 +6,11 @@ import { CircularProgress } from "@material-ui/core";
 export const ProtectedRoute = ({ component, ...args }: any) => (
   <Route
     component={withAuthenticationRequired(component, {
-      onRedirecting: () => <CircularProgress />,
+      onRedirecting: () => (
+        <div style={{ margin: "100px auto 0", textAlign: "center" }}>
+          <CircularProgress />
+        </div>
+      ),
     })}
     {...args}
   />

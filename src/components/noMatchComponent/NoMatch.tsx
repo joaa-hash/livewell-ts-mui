@@ -58,7 +58,7 @@ export const NoMatch = () => {
       />
       <div className={classes.message}>
         <Typography variant="h4" color="primary">
-          Sorry you must have entered a incorrect path
+          Sorry you must have entered an incorrect path
         </Typography>
         <Button variant="contained" color="secondary">
           <Link to="/">Return to Main page</Link>
