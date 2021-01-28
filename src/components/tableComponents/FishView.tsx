@@ -10,6 +10,7 @@ import {
   TableHead,
   TableRow,
   Theme,
+  Typography,
   withStyles,
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
@@ -49,6 +50,14 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       minHeight: "80vh",
     },
+    header: {
+      textAlign: "center",
+      marginTop: 57,
+      color: "#80c531",
+      background: "#0095da38",
+      fontWeight: "bolder",
+      fontSize: "4rem",
+    },
     tableContainer: {
       width: "100%",
       marginBottom: 40,
@@ -70,15 +79,17 @@ const FishView = () => {
   const fish = useSelector((state: AppState) => state.fish);
   return (
     <div className={classes.root}>
+      <Typography className={classes.header}>Fish View</Typography>
       <img
         src={logo}
         alt="fish"
         style={{
-          width: 314,
-          height: 155,
+          width: 148,
+          height: 65,
           padding: "0px 10px 0px",
-          margin: "20px auto 10px",
+          margin: "20px auto 45px",
           display: "block",
+          boxShadow: "1px 1px 15px 3px #00000040",
         }}
       />
       <TableContainer component={Paper} className={classes.tableContainer}>
