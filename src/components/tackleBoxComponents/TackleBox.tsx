@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
-import tacklebox from "../../media/tacklebox.jpg";
+import tacklebox from "../../media/largemouth_bass.jpg";
 import { useDispatch } from "react-redux";
 import { getUserFish } from "../../actions";
 import {
@@ -28,6 +28,14 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       minHeight: "80vh",
     },
+    header: {
+      textAlign: "center",
+      marginTop: 57,
+      color: "#80c531",
+      background: "#0095da38",
+      fontWeight: "bolder",
+      fontSize: "4rem",
+    },
     grid: {
       marginTop: 30,
       marginBottom: 100,
@@ -40,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 1,
       boxShadow: "9px 11px 16px #ffff0012",
       // border: "2px solid #ffff0024",
-      border: "1px solid white",
+      // border: "1px solid white",
       "&::after": {
         content: "''",
         borderRadius: 5,
@@ -48,7 +56,8 @@ const useStyles = makeStyles((theme: Theme) =>
         top: 0,
         left: 0,
         // background: "rgba(0,0,0,0.72)",
-        background: "rgb(0 168 195 / 20%)",
+        // background: "rgb(0 168 195 / 20%)",
+        background: "rgb(1 94 109 / 64%)",
         width: "100%",
         height: "100%",
         zIndex: -1,
@@ -109,15 +118,17 @@ export const TackleBox = () => {
 
   return (
     <div className={classes.root}>
+      <Typography className={classes.header}>Tacklebox</Typography>
       <img
         src={logo}
         alt="fish"
         style={{
-          width: 314,
-          height: 155,
+          width: 148,
+          height: 65,
           padding: "0px 10px 0px",
           margin: "20px auto 0",
           display: "block",
+          boxShadow: "1px 1px 15px 3px #00000040",
         }}
       />
       <Grid className={classes.grid}>
