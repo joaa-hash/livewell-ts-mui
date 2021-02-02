@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  CircularProgress,
   createStyles,
   makeStyles,
   Paper,
+  Switch,
   Table,
   TableBody,
   TableCell,
@@ -17,6 +19,7 @@ import logo from "../../media/livewell_fish_logo.png";
 import FishDeleteModal from "./FishDeleteModal";
 import { useSelector } from "react-redux";
 import { AppState } from "../..";
+import { Pagination } from "./Pagination";
 
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
@@ -76,10 +79,14 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const FishView = () => {
   const classes = useStyles();
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   const fish = useSelector((state: AppState) => state.fish);
+  let fishArrayClone = [...fish];
+  fishArrayClone = fishArrayClone.slice(page * 5 - 5, page * 5);
   return (
     <div className={classes.root}>
-      <Typography className={classes.header}>Fish View</Typography>
+      <Typography className={classes.header}>Livewell</Typography>
       <img
         src={logo}
         alt="fish"
@@ -103,25 +110,38 @@ const FishView = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {fish.map((fish, index) => (
-              <StyledTableRow key={`${fish.species}${index * 2}`}>
-                <StyledTableCell component="th" scope="row">
-                  {fish.species}
-                </StyledTableCell>
-                <StyledTableCell align="left">
-                  {fish.inches} inches
-                </StyledTableCell>
-                <StyledTableCell align="left">
-                  {fish.pounds} lbs {fish.ounces} ounces
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <FishDeleteModal fishId={fish.id} fish={fish} />
+            {loading ? (
+              <StyledTableRow>
+                <StyledTableCell>
+                  <CircularProgress color="secondary" />
                 </StyledTableCell>
               </StyledTableRow>
-            ))}
+            ) : (
+              fishArrayClone.map((fish, index) => (
+                <StyledTableRow key={`${fish.species}${index * 2}`}>
+                  <StyledTableCell component="th" scope="row">
+                    {fish.species}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {fish.inches} inches
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {fish.pounds} lbs {fish.ounces} ounces
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    <FishDeleteModal fishId={fish.id} fish={fish} />
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))
+            )}
           </TableBody>
         </Table>
       </TableContainer>
+      <Pagination
+        length={fish.length}
+        setPage={setPage}
+        setLoading={setLoading}
+      />
     </div>
   );
 };
