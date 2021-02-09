@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
     header: {
       color: theme.palette.primary.main,
       textShadow: " 3px 4px 13px black",
+      fontWeight: 400,
     },
     subheader: {
       color: "white",
@@ -38,12 +39,19 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
       fontSize: "1.1rem",
+      fontWeight: 800,
+      "&:hover": {
+        backgroundColor: theme.palette.primary.main,
+      },
     },
     tackleBoxButtonLink: {
       color: theme.palette.primary.contrastText,
       paddingRight: 12,
       "&:visited": {
         color: theme.palette.primary.contrastText,
+      },
+      "&:hover": {
+        backgroundColor: theme.palette.primary.main,
       },
     },
     tackleBoxIcon: {
@@ -93,7 +101,11 @@ export const Main = () => {
           src={logo}
           alt="fish"
           style={{
-            width: 314,
+            // width: 314,
+            width: 378,
+            background: "#b1b1b159",
+            boxShadow: "1px 1px 14px 10px #71717182",
+            borderRadius: 4,
             height: 170,
             padding: "0px 10px 0px",
           }}

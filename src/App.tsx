@@ -1,4 +1,4 @@
-import { Container } from "@material-ui/core";
+import { Container, createStyles, makeStyles, Theme } from "@material-ui/core";
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -12,11 +12,20 @@ import { TackleBox } from "./components/tackleBoxComponents/TackleBox";
 import { AttachAuthHeader } from "./services/http";
 import { NoMatch } from "./components/noMatchComponent/NoMatch";
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      backgroundColor: "#3c3c3c",
+    },
+  })
+);
+
 export const App = () => {
   const [isToken, setIsToken] = useState(false);
+  const classes = useStyles();
   AttachAuthHeader(setIsToken);
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md" className={classes.root}>
       <div className="App">
         <Route path="/user" component={Header} />
         <Switch>
