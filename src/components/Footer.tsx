@@ -40,7 +40,7 @@ const Footer = () => {
       <BottomNavigationAction
         component={Link}
         to="fish-view"
-        label="View Fish"
+        label="Livewell"
         className={classes.nav}
         icon={<TableChart color="primary" />}
       />
