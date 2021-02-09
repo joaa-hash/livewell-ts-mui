@@ -19,19 +19,19 @@ export const dialog = [
   },
   {
     d1: "Water birds are fishing too.",
-    d2: "Maybe they can share.",
+    d2: "Must be some action around",
     i1: "",
     i2: "",
   },
   {
-    d1: "A country mile ain't that bad.",
-    d2: "Easy does it",
+    d1: "Plenty of time?",
+    d2: "Then easy does it",
     i1: "",
     i2: "",
   },
   {
     d1: "How many boats are out?",
-    d2: "Anybody got the right idea?",
+    d2: "They must have the right idea!!",
     i1: "",
     i2: "",
   },
@@ -49,7 +49,7 @@ export const dialog = [
   },
   {
     d1: "Blue skies are sure easy on the eyes",
-    d2: "Fishing is a way of life",
+    d2: "Great day for fishing!!!",
     i1: "",
     i2: "",
   },
