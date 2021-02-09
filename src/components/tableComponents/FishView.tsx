@@ -16,10 +16,11 @@ import {
   withStyles,
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
-import FishDeleteModal from "./FishDeleteModal";
+import FishDeleteModal from "../helperComponents/FishDeleteModal";
 import { useSelector } from "react-redux";
 import { AppState } from "../..";
 import { Pagination } from "./Pagination";
+import { Waves } from "@material-ui/icons";
 
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
@@ -116,7 +117,7 @@ const FishView = () => {
                   <CircularProgress color="secondary" />
                 </StyledTableCell>
               </StyledTableRow>
-            ) : (
+            ) : fishArrayClone.length ? (
               fishArrayClone.map((fish, index) => (
                 <StyledTableRow key={`${fish.species}${index * 2}`}>
                   <StyledTableCell component="th" scope="row">
@@ -133,6 +134,13 @@ const FishView = () => {
                   </StyledTableCell>
                 </StyledTableRow>
               ))
+            ) : (
+              <StyledTableRow>
+                <StyledTableCell>
+                  <Waves />
+                  <Typography variant="h4">No fish in livewell</Typography>
+                </StyledTableCell>
+              </StyledTableRow>
             )}
           </TableBody>
         </Table>
