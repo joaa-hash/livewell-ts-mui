@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -22,6 +22,7 @@ import {
 } from "@material-ui/icons";
 import { dialog } from "./dialog";
 import Switch from "../helperComponents/Switch";
+import FishDeleteModal from "../helperComponents/FishDeleteModal";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -65,14 +66,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     gridItem: {
       textAlign: "center",
-      padding: "40px 0",
+      padding: "22px 0",
     },
     button: {
       background: theme.palette.primary.contrastText,
       boxShadow: `7px 8px 8px 0px #ffff0036`,
       border: "1px solid #f4ff0091",
-    },
-    route: {
       color: theme.palette.primary.main,
     },
     card: {
@@ -109,6 +108,7 @@ const dialogShuffler = (array: any) => {
 };
 
 export const TackleBox = () => {
+  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserFish());
@@ -135,39 +135,48 @@ export const TackleBox = () => {
         <Grid item className={classes.gridItem}>
           <Button
             variant="contained"
+            component={RouterLink}
+            to="/user/fish-view"
             className={classes.button}
             size="large"
             endIcon={<TableChart color="primary" />}
           >
-            <Link to="/user/fish-view" className={classes.route}>
-              View Fish
-            </Link>
+            View Fish
           </Button>
+        </Grid>
+
+        <Grid item className={classes.gridItem}>
+          <FishDeleteModal deleteAll={true} />
         </Grid>
         <Grid item className={classes.gridItem}>
           <Button
             variant="contained"
+            component={RouterLink}
+            to="/user/fish-enter"
             className={classes.button}
             size="large"
             endIcon={<AddCircleOutline color="primary" />}
           >
-            <Link to="/user/fish-enter" className={classes.route}>
-              Add Fish
-            </Link>
+            Add Fish
           </Button>
         </Grid>
-        <Grid item>
-          <Card className={classes.card}>
-            <CardContent>
-              <WbSunny color="primary" fontSize="large" />
-              {dialogShuffler(dialog)}
-              <Cloud color="secondary" fontSize="large" />
-            </CardContent>
-          </Card>
-        </Grid>
+        {!checked ? (
+          <div></div>
+        ) : (
+          <Grid item>
+            <Card className={classes.card}>
+              <CardContent>
+                <WbSunny color="primary" fontSize="large" />
+                {dialogShuffler(dialog)}
+                <Cloud color="secondary" fontSize="large" />
+              </CardContent>
+            </Card>
+          </Grid>
+        )}
+
         <Grid item className={classes.switchGridItem}>
-          <Switch />
-          <label>turn off dialog</label>
+          <Switch setChecked={setChecked} />
+          <label>turn {checked ? "off" : "on"} dialog</label>
         </Grid>
       </Grid>
     </div>
