@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: "5px",
       color: "yellow",
       fontSize: "19px",
+      cursor: "pointer",
     },
   })
 );
