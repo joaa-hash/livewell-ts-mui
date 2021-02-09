@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { deleteFish } from "../../actions";
 import logo from "../../media/livewell_fish_logo.png";
+import { Delete } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,6 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
     deleteButton: {
       backgroundColor: "#ff2f2f",
       color: "white",
+    },
+    deleteAllButton: {
+      background: theme.palette.primary.contrastText,
+      boxShadow: `7px 8px 8px 0px #ffff0036`,
+      border: "1px solid #f4ff0091",
+      color: theme.palette.primary.main,
     },
     paper: {
       backgroundColor: theme.palette.secondary.main,
@@ -37,7 +44,10 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function TransitionsModal(props: any) {
   const dispatch = useDispatch();
   const deleteFishActionCaller = () => {
-    dispatch(deleteFish(props.fishId));
+    props.deleteAll
+      ? dispatch(deleteFish(-1))
+      : dispatch(deleteFish(props.fishId));
+    handleClose();
   };
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -52,15 +62,28 @@ export default function TransitionsModal(props: any) {
 
   return (
     <div>
-      <Button
-        type="button"
-        onClick={handleOpen}
-        variant="contained"
-        color="primary"
-        className={classes.deleteButton}
-      >
-        Delete
-      </Button>
+      {props.deleteAll ? (
+        <Button
+          type="button"
+          onClick={handleOpen}
+          variant="contained"
+          size="large"
+          endIcon={<Delete color="primary" />}
+          className={classes.deleteAllButton}
+        >
+          Clear Livewell
+        </Button>
+      ) : (
+        <Button
+          type="button"
+          onClick={handleOpen}
+          variant="contained"
+          color="primary"
+          className={classes.deleteButton}
+        >
+          Delete
+        </Button>
+      )}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -88,10 +111,13 @@ export default function TransitionsModal(props: any) {
             />
             <h2 id="transition-modal-title">Delete Fish</h2>
             <p id="transition-modal-description">
-              are you sure you want to delete this fish?
+              are you sure you want to delete {props.deleteAll ? `all` : `this`}{" "}
+              fish?
             </p>
             <p id="transition-modal-description" style={{ color: "white" }}>
-              {`${props.fish.species} ${props.fish.inches} inches ${props.fish.pounds} lbs ${props.fish.ounces} ouunces`}
+              {!props.deleteAll
+                ? `${props.fish.species} ${props.fish.inches} inches ${props.fish.pounds} lbs ${props.fish.ounces} ounces`
+                : ``}
             </p>
             <Button
               onClick={deleteFishActionCaller}
