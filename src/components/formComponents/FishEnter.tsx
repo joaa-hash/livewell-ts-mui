@@ -15,6 +15,7 @@ import {
 import logo from "../../media/livewell_fish_logo.png";
 import tackle from "../../media/tackle_box.jpg";
 import { addFish } from "../../actions";
+import { Today, Toys, Waves } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,6 +25,14 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: 40,
       paddingBottom: 50,
       textAlign: "center",
+    },
+    header: {
+      textAlign: "center",
+      marginTop: 57,
+      color: "#80c531",
+      background: "#0095da38",
+      fontWeight: "bolder",
+      fontSize: "4rem",
     },
     gridItem: {
       width: "100%",
@@ -40,27 +49,48 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     inputHeader: {
       color: theme.palette.primary.contrastText,
+      fontWeight: 800,
     },
     formHeader: {
-      color: "white",
+      color: theme.palette.primary.main,
+      // color:"#e0e0e0",
       width: "100%",
       position: "relative",
-      backgroundImage: `url(${tackle})`,
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
+      padding: "0 !important",
+      // backgroundImage: `url(${tackle})`,
+      // backgroundSize: "cover",
+      // backgroundRepeat: "no-repeat",
       "& h4": {
         fontWeight: 1000,
       },
       zIndex: 1,
-      "&::before": {
-        content: "''",
-        position: "absolute",
-        top: 0,
-        left: 0,
-        background: "rgba(0,0,0,0.72)",
-        width: "100%",
-        height: "100%",
-        zIndex: -1,
+      // "&::before": {
+      //   content: "''",
+      //   position: "absolute",
+      //   top: 0,
+      //   left: 0,
+      //   background: "rgba(0,0,0,0.72)",
+      //   // background: "rgb(58 78 27 / 88%)",
+      //   width: "100%",
+      //   height: "100%",
+      //   zIndex: -1,
+      // },
+      "& .MuiSvgIcon-root": {
+        fontSize: "6rem",
+        margin: "13px 3px -7px",
+        fill: theme.palette.primary.contrastText,
+      },
+      "& .MuiTypography-root": {
+        marginBottom: 8,
+        display: "block",
+        fontFamily: "cursive",
+        fontWeight: "bold",
+        fontSize: 32,
+        height: 86,
+        background: "#5b822e",
+        backgroundImage: "linear-gradient(45deg, #ffffff78, #ffffff00)",
+        letterSpacing: 2,
+        padding: "13px 0",
       },
     },
     select: {
@@ -69,6 +99,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: 25,
       lineHeight: "29px",
       appearance: "none",
+      border: "1px solid #5b822e",
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -79,6 +110,7 @@ const useStyles = makeStyles((theme: Theme) =>
     addFishBtn: {
       backgroundColor: theme.palette.primary.contrastText,
       color: theme.palette.primary.main,
+      fontWeight: 900,
     },
   })
 );
@@ -135,15 +167,18 @@ const _FishEnter = (props: any) => {
   const classes = useStyles();
   return (
     <div>
+      {/* <Typography className={classes.header}>Add Fish</Typography> */}
       <img
         src={logo}
         alt="fish"
         style={{
-          width: 314,
-          height: 155,
+          width: 351,
+          height: 128,
           padding: "0px 10px 0px",
-          margin: "20px auto",
+          margin: "35px auto",
           display: "block",
+          boxShadow: "1px 1px 20px 9px #0000002e",
+          background: "#505050",
         }}
       />
       <form className={classes.root} onSubmit={props.handleSubmit(onSubmit)}>
@@ -155,7 +190,8 @@ const _FishEnter = (props: any) => {
           alignItems="center"
         >
           <Grid item xs={12} className={classes.formHeader}>
-            <Typography variant="h4">Add Fish</Typography>
+            <Typography>Today's Catch</Typography>
+            <Today />
           </Grid>
           <Grid item className={classes.gridItem}>
             <Typography variant="h4" className={classes.inputHeader}>
