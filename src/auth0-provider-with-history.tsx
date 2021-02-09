@@ -16,7 +16,7 @@ export const Auth0ProviderWithHistory = ({ children }: IProps) => {
     <Auth0Provider
       domain={keys.domain}
       clientId={keys.clientId}
-      redirectUri="http://localhost:3000/"
+      redirectUri="http://localhost:3000/user/tacklebox"
       onRedirectCallback={onRedirectCallback}
       audience={keys.audience}
     >
