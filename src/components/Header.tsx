@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
       backgroundColor: "#0000001c",
-      color: theme.palette.primary.main,
+      color: "#73a23c",
     },
     menu: {
       "& ul": {
@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+      fontWeight: 800,
     },
     icon: {
       marginLeft: 7,
@@ -82,19 +83,32 @@ const Header = () => {
           onClose={handleClose}
           className={classes.menu}
         >
-          <MenuItem onClick={handleClose}>
-            <NavLink to="/user/tacklebox">Tackle Box</NavLink>
+          <MenuItem
+            onClick={handleClose}
+            component={NavLink}
+            to="/user/tacklebox"
+          >
+            Tacklebox
+            {/* <NavLink to="/user/tacklebox">Tackle Box</NavLink> */}
             <BusinessCenter
               color="primary"
               className={classes.icon}
             ></BusinessCenter>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <NavLink to="/user/fish-view">View Fish</NavLink>
+          <MenuItem
+            onClick={handleClose}
+            component={NavLink}
+            to="/user/fish-view"
+          >
+            Livewell
             <TableChart color="primary" className={classes.icon}></TableChart>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <NavLink to="/user/fish-enter">Add Fish</NavLink>
+          <MenuItem
+            onClick={handleClose}
+            component={NavLink}
+            to="/user/fish-enter"
+          >
+            Add Fish
             <AddCircle color="primary" className={classes.icon}></AddCircle>
           </MenuItem>
         </Menu>
