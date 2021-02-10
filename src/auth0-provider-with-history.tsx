@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { customHistory } from "./history/history";
-import { keys } from "./keys/keys";
 
 interface IProps {
   children: ReactNode;
@@ -14,11 +13,11 @@ export const Auth0ProviderWithHistory = ({ children }: IProps) => {
 
   return (
     <Auth0Provider
-      domain={keys.domain}
-      clientId={keys.clientId}
+      domain={`${process.env.REACT_APP_AUTH0_DOMAIN}`}
+      clientId={`${process.env.REACT_APP_AUTH0_CLIENT_ID}`}
       redirectUri="http://localhost:3000/user/tacklebox"
       onRedirectCallback={onRedirectCallback}
-      audience={keys.audience}
+      audience={`${process.env.REACT_APP_AUTH0_AUDIENCE}`}
     >
       {children}
     </Auth0Provider>

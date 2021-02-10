@@ -16,7 +16,7 @@ export interface DeleteFishAction {
   payload: Fish[];
 }
 
-const url = "http://localhost:8080/api/authorize";
+const url = "https://livewell-app-api.herokuapp.com/";
 
 export const addFish = (formData: {}, props: any) => {
   return async (dispatch: Dispatch) => {
