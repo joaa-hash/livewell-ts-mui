@@ -13,9 +13,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
-import tackle from "../../media/tackle_box.jpg";
 import { addFish } from "../../actions";
-import { Today, Toys, Waves } from "@material-ui/icons";
+import { Today } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
