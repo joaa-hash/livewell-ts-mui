@@ -15,7 +15,7 @@ export const Auth0ProviderWithHistory = ({ children }: IProps) => {
     <Auth0Provider
       domain={`${process.env.REACT_APP_AUTH0_DOMAIN}`}
       clientId={`${process.env.REACT_APP_AUTH0_CLIENT_ID}`}
-      redirectUri="https://livewell-app.netlify.app/"
+      redirectUri="https://livewell-app.netlify.app/user/tacklebox"
       onRedirectCallback={onRedirectCallback}
       audience={`${process.env.REACT_APP_AUTH0_AUDIENCE}`}
     >
