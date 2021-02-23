@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
 import tacklebox from "../../media/largemouth_bass.jpg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserFish } from "../../actions";
 import {
   AddCircleOutline,
@@ -23,6 +23,7 @@ import {
 import { dialog } from "./dialog";
 import Switch from "../helperComponents/Switch";
 import FishDeleteModal from "../helperComponents/FishDeleteModal";
+import { AppState } from "../..";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -109,10 +110,11 @@ const dialogShuffler = (array: any) => {
 
 export const TackleBox = () => {
   const [checked, setChecked] = useState(false);
+  const fish = useSelector((state: AppState) => state.fish);
   const dispatch = useDispatch();
-  useCallback(() => {
+  useEffect(() => {
     dispatch(getUserFish());
-  }, [dispatch]);
+  }, [fish]);
 
   const classes = useStyles();
 
