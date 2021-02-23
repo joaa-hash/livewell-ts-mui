@@ -110,11 +110,10 @@ const dialogShuffler = (array: any) => {
 
 export const TackleBox = () => {
   const [checked, setChecked] = useState(false);
-  const fish = useSelector((state: AppState) => state.fish);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserFish());
-  }, [dispatch, fish]);
+  }, [dispatch]);
 
   const classes = useStyles();
 
