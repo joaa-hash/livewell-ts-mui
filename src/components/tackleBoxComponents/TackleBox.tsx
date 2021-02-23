@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import logo from "../../media/livewell_fish_logo.png";
 import tacklebox from "../../media/largemouth_bass.jpg";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUserFish } from "../../actions";
 import {
   AddCircleOutline,
@@ -23,7 +23,6 @@ import {
 import { dialog } from "./dialog";
 import Switch from "../helperComponents/Switch";
 import FishDeleteModal from "../helperComponents/FishDeleteModal";
-import { AppState } from "../..";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
