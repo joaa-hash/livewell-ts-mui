@@ -131,7 +131,7 @@ export const Main = () => {
         </IconButton>
       </Grid>
       <div className={classes.videoContainer}>
-        <video autoPlay loop className={classes.video}>
+        <video autoPlay loop muted className={classes.video}>
           <source src={lakeVid} type="video/mp4"></source>
         </video>
       </div>
