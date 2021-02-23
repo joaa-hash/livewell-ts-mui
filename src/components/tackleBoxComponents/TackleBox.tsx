@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import Button from "@material-ui/core/Button";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -110,7 +110,7 @@ const dialogShuffler = (array: any) => {
 export const TackleBox = () => {
   const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
+  useCallback(() => {
     dispatch(getUserFish());
   }, [dispatch]);
 
