@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Footer = () => {
+export const Footer = () => {
   const classes = useStyles();
   return (
     <BottomNavigation showLabels className={classes.root}>
@@ -55,5 +55,3 @@ const Footer = () => {
     </BottomNavigation>
   );
 };
-
-export default Footer;

@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const FishView = () => {
+export const FishView = () => {
   const classes = useStyles();
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -152,5 +152,3 @@ const FishView = () => {
     </div>
   );
 };
-
-export default FishView;

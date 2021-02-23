@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Header = () => {
+export const Header = () => {
   const classes = useStyles();
   const { isAuthenticated, logout } = useAuth0();
 
@@ -124,5 +124,3 @@ const Header = () => {
     </AppBar>
   );
 };
-
-export default Header;
