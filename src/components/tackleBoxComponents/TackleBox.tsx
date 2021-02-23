@@ -114,7 +114,7 @@ export const TackleBox = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserFish());
-  }, [fish]);
+  }, [dispatch, fish]);
 
   const classes = useStyles();
 
