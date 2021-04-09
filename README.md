@@ -1,5 +1,7 @@
 # Livewell App
 
+<img src="https://github.com/michael-williamson/livewell_app_ts/blob/main/demoPics/livewell-frontpage.png" width="400" height="400">
+
 #### Livewell App that tracks the fish currently in the livewell
 
 #### [https://livewell-app.netlify.app/](https://livewell-app.netlify.app/)
