@@ -101,7 +101,6 @@ export const Main = () => {
           src={logo}
           alt="fish"
           style={{
-            // width: 314,
             width: 378,
             background: "#b1b1b159",
             boxShadow: "1px 1px 14px 10px #71717182",
