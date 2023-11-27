@@ -1,6 +1,6 @@
 # Livewell App
 
-<img src="https://github.com/michael-williamson/livewell_app_ts/blob/main/demoPics/livewell-frontpage.png" width="400" height="400" height="400">
+<img src="https://github.com/joaa-hash/livewell_app_ts/blob/main/demoPics/livewell-frontpage.png" width="400" height="400" height="400">
 
 #### Livewell App that tracks the fish currently in the livewell
 
@@ -12,7 +12,7 @@
 
 - [General Info](#general-info)
 - [Technologies](#technologies)
-- [Link to backend API](https://github.com/michael-williamson/livewell-app-api)
+- [Link to backend API](https://github.com/joaa-hash/livewell-app-api)
 
 ## General Info
 
@@ -20,7 +20,7 @@ Full Stack web application meant for fishing enthusiasts and designed with User 
 Allows the user to supervise the current fish in their livewell in order to use more time enjoying fishing and less time concerned about keeping tally of their catch. Livewell
 app offers a variety of input such as species of the fish in the livewell as well as length and weight.
 
-<img src="https://github.com/michael-williamson/livewell_app_ts/blob/main/demoPics/livewell-dashboard.png" width="400" height="400"> <img src="https://github.com/michael-williamson/livewell_app_ts/blob/main/demoPics/livewell-form.png" width="400" height="400"> <img src="https://github.com/michael-williamson/livewell_app_ts/blob/main/demoPics/livewell-table.png" width="400" height="400">
+<img src="https://github.com/joaa-hash/livewell_app_ts/blob/main/demoPics/livewell-dashboard.png" width="400" height="400"> <img src="https://github.com/joaa-hash/livewell_app_ts/blob/main/demoPics/livewell-form.png" width="400" height="400"> <img src="https://github.com/joaa-hash/livewell_app_ts/blob/main/demoPics/livewell-table.png" width="400" height="400">
 
 ## Technologies
 
